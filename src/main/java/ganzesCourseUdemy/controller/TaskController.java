@@ -36,7 +36,7 @@ public class TaskController {
 
     @PutMapping("/tasks/{id}")
     ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody @Valid Task toUpdate){
-        if (!taskRepository.existById(id)){
+        if (!taskRepository.existsById(id)){
             return ResponseEntity.notFound().build();
         };
         toUpdate.setId(id);
