@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -58,9 +59,16 @@ public class TaskController {
 
     @PostMapping("/tasks")
     ResponseEntity<?> createTask(@RequestBody @Valid Task newTask){
-        if (!taskRepository.existsById(newTask.getId())){
+      /*  if (!taskRepository.existsById(newTask.getId())){
             return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.created(new URI(newTask.));
+        }*/
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(taskRepository.save(newTask))
+                .toUri();
+
+        return ResponseEntity.created(location).build();
     }
 }
