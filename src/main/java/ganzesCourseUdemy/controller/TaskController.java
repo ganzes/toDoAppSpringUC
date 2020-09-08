@@ -50,7 +50,7 @@ public class TaskController {
     @GetMapping("/tasks/{id}")
     ResponseEntity<?> getTask(@PathVariable int id){
         Optional<Task> taskOptional = taskRepository.findById(id);
-        if (!taskOptional.isPresent()){
+        if (taskOptional.isEmpty()){
             return ResponseEntity.notFound().build();
         }
 
@@ -59,7 +59,7 @@ public class TaskController {
 
     @PostMapping("/tasks")
     ResponseEntity<?> createTask(@RequestBody @Valid Task newTask){
-      /*  if (!taskRepository.existsById(newTask.getId())){
+        /*if (!taskRepository.existsById(newTask.getId())){
             return ResponseEntity.notFound().build();
         }*/
 
