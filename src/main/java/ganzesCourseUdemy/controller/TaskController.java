@@ -54,15 +54,11 @@ public class TaskController {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(taskRepository.findById(id));
+        return ResponseEntity.ok(taskOptional);
     }
 
     @PostMapping("/tasks")
     ResponseEntity<?> createTask(@RequestBody @Valid Task newTask){
-        /*if (!taskRepository.existsById(newTask.getId())){
-            return ResponseEntity.notFound().build();
-        }*/
-
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
