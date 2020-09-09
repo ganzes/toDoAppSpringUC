@@ -51,9 +51,11 @@ public class TaskController {
     ResponseEntity<?> getTask(@PathVariable int id){
         Optional<Task> taskOptional = taskRepository.findById(id);
         if (taskOptional.isEmpty()){
+            logger.info("Single task not found.");
             return ResponseEntity.notFound().build();
         }
 
+        logger.info("Singe task has been found.");
         return ResponseEntity.ok(taskOptional);
     }
 
@@ -65,6 +67,7 @@ public class TaskController {
                 .buildAndExpand(taskRepository.save(newTask))
                 .toUri();
 
+        logger.info("New Task has been created!");
         return ResponseEntity.created(location).build();
     }
 }
