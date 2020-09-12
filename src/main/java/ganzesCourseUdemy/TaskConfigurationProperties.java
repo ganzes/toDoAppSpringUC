@@ -1,32 +1,26 @@
 package ganzesCourseUdemy;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties("task")
 public class TaskConfigurationProperties {
+    private Template template;
 
-    @NestedConfigurationProperty
-    Template template = new Template();
-
-    //private boolean allowMultipleTaskFromTemplate;
-
-    public boolean isAllowMultipleTaskFromTemplate() {
-        return template.allowMultipleTasks;
+    public Template getTemplate() {
+        return template;
     }
 
-    public void setAllowMultipleTaskFromTemplate(final boolean allowMultipleTaskFromTemplate) {
-        this.template.allowMultipleTasks = allowMultipleTaskFromTemplate;
+    public void setTemplate(final Template template) {
+        this.template = template;
     }
 
-    @ConfigurationProperties("template")
-    private class Template{
-        boolean allowMultipleTasks;
+    public static class Template {
+        public boolean allowMultipleTasks;
 
         public boolean isAllowMultipleTasks() {
-            return allowMultipleTasks=true;
+            return allowMultipleTasks;
         }
 
         public void setAllowMultipleTasks(boolean allowMultipleTasks) {
