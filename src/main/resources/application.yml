@@ -1,9 +1,6 @@
-spring:
-  h2:
-    console:
-      enabled: true
-      path: '/console'
-  main:
-    banner-mode: off
-  datasource:
-    url: 'jdbc:h2:file:C:/Users/ganzes/Desktop/toDoAppSpringUC/toDoAppSpringUC/todo-db'
+  spring:
+    main:
+      banner-mode: off
+  task.template.allowMultipleTasks: false
+
+  
