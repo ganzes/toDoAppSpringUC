@@ -18,5 +18,5 @@ public interface TaskRepository {
 
     boolean existsById(Integer integer);
 
-    List<Task> findByDone(@Param("state") boolean done);
+    List<Task> findByDone(boolean done);
 }
