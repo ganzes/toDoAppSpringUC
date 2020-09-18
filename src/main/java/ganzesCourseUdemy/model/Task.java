@@ -9,7 +9,6 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    //@Column(name = "description")
     @NotBlank(message = "Tasks description must not be null, empty")
     private String description;
     private boolean done;

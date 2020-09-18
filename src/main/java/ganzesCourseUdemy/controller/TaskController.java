@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -69,5 +70,16 @@ public class TaskController {
 
         logger.info("New Task has been created!");
         return ResponseEntity.created(location).build();
+    }
+
+    @Transactional
+    @PatchMapping("/tasks/{id}")
+    public ResponseEntity<?> toggleTask(@PathVariable int id){
+        if (!taskRepository.existsById(id)){
+            return ResponseEntity.notFound().build();
+        }
+            taskRepository.findById(id)
+                    .ifPresent(task -> task.setDone(!task.isDone()));
+        return ResponseEntity.noContent().build();
     }
 }
