@@ -2,6 +2,8 @@ package ganzesCourseUdemy.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
@@ -12,6 +14,8 @@ public class Task {
     @NotBlank(message = "Tasks description must not be null, empty")
     private String description;
     private boolean done;
+    @Column(name = "deadline")
+    private LocalDateTime deadline;
 
     public Task() {
     }
