@@ -43,8 +43,11 @@ public class TaskController {
         if (!taskRepository.existsById(id)){
             return ResponseEntity.notFound().build();
         }
-        toUpdate.setId(id);
-        taskRepository.save(toUpdate);
+        taskRepository.findById(id)
+                .ifPresent(task -> {
+                    task.updateFrom(toUpdate);
+                    taskRepository.save(task);
+                });
         return ResponseEntity.noContent().build();
     }
 
