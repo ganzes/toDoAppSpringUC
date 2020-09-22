@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
-public class Task {
+public class Task extends BaseAuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,8 +15,7 @@ public class Task {
     private boolean done;
     @Column(name = "deadline")
     private LocalDateTime deadline;
-    private LocalDateTime createdOn;
-    private LocalDateTime updatedOn;
+
 
     public Task() {
     }
@@ -57,16 +56,7 @@ public class Task {
         description = source.description;
         done = source.done;
         deadline = source.deadline;
-        createdOn = source.deadline;
     }
 
-    @PrePersist
-    private void prePersist(){
-        createdOn = LocalDateTime.now();
-    }
 
-    @PreUpdate
-    private void preUpdate(){
-        updatedOn = LocalDateTime.now();
-    }
 }
