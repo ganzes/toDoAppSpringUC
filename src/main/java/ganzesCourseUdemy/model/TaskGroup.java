@@ -16,6 +16,12 @@ public class TaskGroup {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "group")
     private Set<Task> tasks;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Projects projects;
+
+
+
     public TaskGroup() {
     }
 
@@ -49,5 +55,13 @@ public class TaskGroup {
 
     public void setTasks(final Set<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Projects getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Projects projects) {
+        this.projects = projects;
     }
 }

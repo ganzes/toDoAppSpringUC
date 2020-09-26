@@ -2,15 +2,25 @@ package ganzesCourseUdemy.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 @Table(name = "projects")
 public class Projects {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message = "Description cannot be blank!")
-    private String description;
+    @NotBlank(message = "Project description must not be null and empty")
+    String description;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
+    private Set<TaskGroup> taskGroups;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
+    private Set<ProjectSteps> projectSteps;
+
+    private int daysToDeadline;
 
     public Projects() {
     }
@@ -29,5 +39,29 @@ public class Projects {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<TaskGroup> getTaskGroups() {
+        return taskGroups;
+    }
+
+    public void setTaskGroups(Set<TaskGroup> taskGroups) {
+        this.taskGroups = taskGroups;
+    }
+
+    public Set<ProjectSteps> getProjectSteps() {
+        return projectSteps;
+    }
+
+    public void setProjectSteps(Set<ProjectSteps> projectSteps) {
+        this.projectSteps = projectSteps;
+    }
+
+    public int getDaysToDeadline() {
+        return daysToDeadline;
+    }
+
+    public void setDaysToDeadline(int daysToDeadline) {
+        this.daysToDeadline = daysToDeadline;
     }
 }
