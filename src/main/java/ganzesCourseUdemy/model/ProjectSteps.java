@@ -9,13 +9,13 @@ public class ProjectSteps {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @NotBlank(message = "Project steps description must not be null and empty")
     private String description;
-
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Projects projects;
+
+    private int daysToDeadline = -2;
 
     public ProjectSteps() {
     }
@@ -42,5 +42,13 @@ public class ProjectSteps {
 
     public void setProjects(Projects projects) {
         this.projects = projects;
+    }
+
+    public int getDaysToDeadline() {
+        return daysToDeadline;
+    }
+
+    public void setDaysToDeadline(int daysToDeadline) {
+        this.daysToDeadline = daysToDeadline;
     }
 }

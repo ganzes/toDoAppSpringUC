@@ -13,14 +13,10 @@ public class Projects {
     private int id;
     @NotBlank(message = "Project description must not be null and empty")
     String description;
-
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
     private Set<TaskGroup> taskGroups;
-
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
     private Set<ProjectSteps> projectSteps;
-
-    private int daysToDeadline;
 
     public Projects() {
     }
@@ -55,13 +51,5 @@ public class Projects {
 
     public void setProjectSteps(Set<ProjectSteps> projectSteps) {
         this.projectSteps = projectSteps;
-    }
-
-    public int getDaysToDeadline() {
-        return daysToDeadline;
-    }
-
-    public void setDaysToDeadline(int daysToDeadline) {
-        this.daysToDeadline = daysToDeadline;
     }
 }
