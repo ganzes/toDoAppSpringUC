@@ -15,7 +15,7 @@ public class Project {
     String description;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "projects")
     private Set<TaskGroup> taskGroups;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projects")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
     private Set<ProjectStep> projectSteps;
 
     public Project() {
