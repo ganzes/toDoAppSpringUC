@@ -13,7 +13,7 @@ public class ProjectSteps {
     private String description;
     @ManyToOne
     @JoinColumn(name = "project_id")
-    private Projects projects;
+    private Project projects;
 
     private int daysToDeadline = -2;
 
@@ -36,11 +36,11 @@ public class ProjectSteps {
         this.description = description;
     }
 
-    public Projects getProjects() {
+    public Project getProjects() {
         return projects;
     }
 
-    public void setProjects(Projects projects) {
+    public void setProjects(Project projects) {
         this.projects = projects;
     }
 

@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "projects")
-public class Projects {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Projects {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
     private Set<ProjectSteps> projectSteps;
 
-    public Projects() {
+    public Project() {
     }
 
     public int getId() {
