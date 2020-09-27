@@ -8,12 +8,12 @@ import java.util.Set;
 @Table(name = "task_groups")
 public class TaskGroup {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank(message = "Tasks description must not be null and empty")
     private String description;
     private boolean done;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "group")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
     private Set<Task> tasks;
 
     @ManyToOne

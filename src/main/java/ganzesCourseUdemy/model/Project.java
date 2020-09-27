@@ -9,14 +9,14 @@ import java.util.Set;
 public class Project {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank(message = "Project description must not be null and empty")
     String description;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projects")
     private Set<TaskGroup> taskGroups;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
-    private Set<ProjectSteps> projectSteps;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projects")
+    private Set<ProjectStep> projectSteps;
 
     public Project() {
     }
@@ -45,11 +45,11 @@ public class Project {
         this.taskGroups = taskGroups;
     }
 
-    public Set<ProjectSteps> getProjectSteps() {
+    public Set<ProjectStep> getProjectSteps() {
         return projectSteps;
     }
 
-    public void setProjectSteps(Set<ProjectSteps> projectSteps) {
+    public void setProjectSteps(Set<ProjectStep> projectSteps) {
         this.projectSteps = projectSteps;
     }
 }

@@ -5,9 +5,9 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "project_steps")
-public class ProjectSteps {
+public class ProjectStep {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank(message = "Project steps description must not be null and empty")
     private String description;
@@ -17,7 +17,7 @@ public class ProjectSteps {
 
     private int daysToDeadline = -2;
 
-    public ProjectSteps() {
+    public ProjectStep() {
     }
 
     public int getId() {
