@@ -14,8 +14,7 @@ public class ProjectStep {
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project projects;
-
-    private int daysToDeadline = -2;
+    private int daysToDeadline;
 
     public ProjectStep() {
     }

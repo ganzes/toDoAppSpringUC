@@ -15,7 +15,6 @@ public class TaskGroup {
     private boolean done;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
     private Set<Task> tasks;
-
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project projects;
