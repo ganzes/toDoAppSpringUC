@@ -8,9 +8,7 @@ import java.util.List;
 
 @Service
 public class ProjectService {
-
     private ProjectRepository projectRepository;
-
 
     public List<Project> findAll(){
         return projectRepository.findAll();
