@@ -59,7 +59,7 @@ public class TaskController {
             return ResponseEntity.notFound().build();
         }
 
-        logger.info("Singe task has been found.");
+        logger.info("Sinlge task has been found.");
         return ResponseEntity.ok(taskOptional);
     }
 
@@ -71,7 +71,7 @@ public class TaskController {
                 .buildAndExpand(taskRepository.save(newTask))
                 .toUri();
 
-        logger.info("New Task has been created!");
+        logger.info("New task has been created!");
         return ResponseEntity.created(location).build();
     }
 
