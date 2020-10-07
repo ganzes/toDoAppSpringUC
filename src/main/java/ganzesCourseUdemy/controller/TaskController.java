@@ -59,7 +59,7 @@ public class TaskController {
             return ResponseEntity.notFound().build();
         }
 
-        logger.info("Sinlge task has been found.");
+        logger.info("Single task has been found.");
         return ResponseEntity.ok(taskOptional);
     }
 
