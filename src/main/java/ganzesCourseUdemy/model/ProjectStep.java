@@ -9,7 +9,7 @@ public class ProjectStep {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @NotBlank(message = "Project steps description must not be null and empty")
+    @NotBlank(message = "Project steps description must not be null and empty!")
     private String description;
     @ManyToOne
     @JoinColumn(name = "project_id")
